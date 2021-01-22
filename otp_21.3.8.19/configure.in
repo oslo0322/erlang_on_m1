@@ -381,7 +381,7 @@ if test $CROSS_COMPILING = no; then
 	   }
 	   [case "$macosx_version" in
 	       [1-9][0-9].[0-9])
-	          int_macosx_version=`echo $macosx_version | sed 's|\([^\.]*\)\.\([^\.]*\)|\1\2|'`;;
+	          int_macosx_version=`echo $macosx_version | sed 's|\([^\.]*\)\.\([^\.]*\)|\10\200|'`;;
 	       [1-9][0-9].[0-9].[0-9])
 	          int_macosx_version=`echo $macosx_version | sed 's|\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)|\1\2\3|'`;;
 	       [1-9][0-9].[1-9][0-9])
@@ -397,7 +397,7 @@ if test $CROSS_COMPILING = no; then
 	   	AC_MSG_ERROR([Unexpected MacOSX version ($macosx_version) returned by 'sw_vers -productVersion'; this configure script probably needs to be updated])
 	   }
 	   AC_TRY_COMPILE([
-#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ > $int_macosx_version
+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ > $int_macosx_version && false
 #error Compiling for a newer MacOSX version...
 #endif
 		], [;],
